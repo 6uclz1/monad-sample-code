@@ -6,4 +6,8 @@ edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "monad_sample"
+path = "src/main.rs"
+
 [dependencies]
