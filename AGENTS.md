@@ -13,7 +13,7 @@
 - `cargo test` – run unit, property, integration, and CLI tests.
 - `cargo fmt -- --check` – verify formatting; run `cargo fmt` to auto-format.
 - `cargo clippy -- -D warnings` – lint with Clippy, treating warnings as errors.
-- `cargo bench -- --sample-size 10` – execute the Criterion smoke benchmark.
+- `cargo bench --all-features --bench pipeline_bench -- --sample-size 10` – execute the Criterion smoke benchmark.
 - `make check` – shortcut for fmt + clippy + test.
 
 ## Coding Style & Naming Conventions
