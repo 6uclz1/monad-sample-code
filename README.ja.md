@@ -18,11 +18,6 @@ cargo fmt -- --check
 cargo clippy -- -D warnings
 ```
 
-## ベンチマーク
-```bash
-cargo bench --all-features --bench pipeline_bench -- --sample-size 10
-```
-
 ## 使い方
 ### 単一行を処理する
 ```bash

@@ -48,9 +48,6 @@ Run everything via `make` helper (optional):
 ```bash
 make check      # fmt + clippy + test
 make bench      # criterion smoke bench
-
-# Manual benchmark
-cargo bench --all-features --bench pipeline_bench -- --sample-size 10
 ```
 
 ## Observability

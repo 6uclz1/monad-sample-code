@@ -14,7 +14,7 @@ test:
 check: fmt clippy test
 
 bench:
-	$(CARGO) bench --all-features --bench pipeline_bench -- --sample-size 10
+	$(CARGO) bench --all-features --bench pipeline_bench
 
 run:
 	$(CARGO) run -- --in -
