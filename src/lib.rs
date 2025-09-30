@@ -224,7 +224,7 @@ mod tests {
 
         #[test]
         fn strict_email_rejects_invalid(local in "[A-Za-z]{1,6}") {
-            let email = format!("{local}");
+            let email = local.to_string();
             prop_assume!(!email.contains('@'));
             let cfg = ValidationConfig {
                 min_age: 0,

@@ -1,4 +1,4 @@
-use anyhow::{anyhow, bail, Result};
+use anyhow::{anyhow, Result};
 use clap::ValueEnum;
 use tracing_subscriber::{fmt, EnvFilter};
 
@@ -28,7 +28,7 @@ fn init_human() -> Result<()> {
 
 #[cfg(not(feature = "human-logs"))]
 fn init_human() -> Result<()> {
-    bail!("human logging support is disabled at compile time")
+    Err(anyhow!("human logging support is disabled at compile time"))
 }
 
 #[cfg(feature = "json-logs")]
@@ -43,7 +43,7 @@ fn init_json() -> Result<()> {
 
 #[cfg(not(feature = "json-logs"))]
 fn init_json() -> Result<()> {
-    bail!("json logging support is disabled at compile time")
+    Err(anyhow!("json logging support is disabled at compile time"))
 }
 
 fn env_filter() -> EnvFilter {
