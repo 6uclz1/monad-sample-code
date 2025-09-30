@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          profile: minimal
+          components: clippy, rustfmt
+
+      - name: Cache cargo directories
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('monadic-pipeline/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: cargo fmt
+        run: cargo fmt -- --check
+        working-directory: monadic-pipeline
+
+      - name: cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+        working-directory: monadic-pipeline
+
+      - name: cargo build
+        run: cargo build --all-features
+        working-directory: monadic-pipeline
+
+      - name: cargo test
+        run: cargo test --all-features
+        working-directory: monadic-pipeline
+
+      - name: cargo bench (smoke)
+        run: cargo bench --all-features -- --sample-size 10
+        working-directory: monadic-pipeline

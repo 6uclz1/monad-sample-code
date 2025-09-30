@@ -1,0 +1,8 @@
+/target
+**/*.rs.bk
+.DS_Store
+# Ignore coverage and benchmarking artifacts
+htmlcov/
+coverage/
+# Cargo packaging leftovers
+Cargo.lock.bak
